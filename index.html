@@ -10,7 +10,7 @@
       --bg-deep: #030303;
       --bg-surface: #0a0a0a;
       --sand: #d4b895;
-      --emerald: #145037; /* Temná, luxusná smaragdová */
+      --emerald: #145037;
       --text-main: #f0f0f0;
       --text-muted: #888888;
       --border: #1a1a1a;
@@ -26,230 +26,72 @@
       overflow-x: hidden;
     }
 
-    /* Odkaz na Zahu Hadid - plynulé rozostrené svetlá v pozadí */
     .glow-1 {
-      position: absolute;
-      top: -10%; left: -10%;
+      position: absolute; top: -10%; left: -10%;
       width: 50vw; height: 50vw;
       background: radial-gradient(circle, rgba(20, 80, 55, 0.15) 0%, rgba(0,0,0,0) 70%);
       z-index: 0; pointer-events: none;
     }
     .glow-2 {
-      position: absolute;
-      bottom: -10%; right: -10%;
+      position: absolute; bottom: -10%; right: -10%;
       width: 40vw; height: 40vw;
       background: radial-gradient(circle, rgba(212, 184, 149, 0.1) 0%, rgba(0,0,0,0) 70%);
       z-index: 0; pointer-events: none;
     }
 
-    .wrapper {
-      position: relative;
-      z-index: 1;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    .wrapper { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    /* NAVIGÁCIA */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 40px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .logo {
-      font-weight: 300;
-      font-size: 1.2rem;
-      letter-spacing: 0.3em;
-    }
+    /* NAVIGÁCIA A JAZYKY */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 40px 0; border-bottom: 1px solid var(--border); }
+    .logo-container { display: flex; flex-direction: column; }
+    .logo { font-weight: 300; font-size: 1.2rem; letter-spacing: 0.3em; }
     .logo b { color: var(--sand); font-weight: 500; }
+    .logo-sub { font-size: 0.6rem; letter-spacing: 0.1em; color: var(--text-muted); margin-top: 4px; }
+    
+    .lang-switcher { display: flex; gap: 16px; font-size: 0.7rem; letter-spacing: 0.1em; }
+    .lang-btn { cursor: pointer; color: var(--text-muted); transition: color 0.3s; }
+    .lang-btn.active { color: var(--text-main); font-weight: 600; }
+    .lang-btn:hover { color: var(--sand); }
 
-    /* HERO SEKCIA */
-    .hero {
-      text-align: center;
-      padding: 120px 0 80px;
-    }
-    .hero-tag {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.4em;
-      color: var(--emerald);
-      margin-bottom: 24px;
-      display: inline-block;
-    }
-    .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      font-weight: 200;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 32px;
-    }
-    .hero h1 i {
-      font-style: normal;
-      color: var(--sand);
-    }
-    .hero p {
-      font-weight: 300;
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto 48px;
-    }
+    /* HERO */
+    .hero { text-align: center; padding: 120px 0 80px; }
+    .hero-tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.4em; color: var(--emerald); margin-bottom: 24px; display: inline-block; }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 200; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 32px; }
+    .hero h1 i { font-style: normal; color: var(--sand); }
+    .hero p { font-weight: 300; font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 48px; }
 
-    .btn-primary {
-      display: inline-block;
-      padding: 18px 40px;
-      background: transparent;
-      border: 1px solid var(--sand);
-      color: var(--sand);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-size: 0.75rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.4s ease;
-      cursor: pointer;
-    }
-    .btn-primary:hover {
-      background: var(--sand);
-      color: var(--bg-deep);
-    }
+    .btn-primary { display: inline-block; padding: 18px 40px; background: transparent; border: 1px solid var(--sand); color: var(--sand); text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.75rem; font-weight: 500; text-decoration: none; transition: all 0.4s ease; cursor: pointer; }
+    .btn-primary:hover { background: var(--sand); color: var(--bg-deep); }
 
-    /* FEATURE SEKCIA */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-      padding: 80px 0;
-      border-top: 1px solid var(--border);
-    }
-    .feature-card {
-      background: var(--bg-surface);
-      padding: 48px 32px;
-      border: 1px solid var(--border);
-      transition: border-color 0.4s ease;
-    }
+    /* FEATURES */
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; padding: 80px 0; border-top: 1px solid var(--border); }
+    .feature-card { background: var(--bg-surface); padding: 48px 32px; border: 1px solid var(--border); transition: border-color 0.4s ease; }
     .feature-card:hover { border-color: var(--emerald); }
-    .feature-card h3 {
-      font-weight: 400;
-      font-size: 1.2rem;
-      margin-bottom: 16px;
-      letter-spacing: 0.05em;
-    }
-    .feature-card p {
-      font-weight: 300;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
+    .feature-card h3 { font-weight: 400; font-size: 1.2rem; margin-bottom: 16px; letter-spacing: 0.05em; }
+    .feature-card p { font-weight: 300; font-size: 0.9rem; color: var(--text-muted); }
 
-    /* CENNÍK (PRICING) */
-    .pricing-section {
-      padding: 100px 0;
-    }
-    .pricing-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-    .pricing-header h2 {
-      font-weight: 300;
-      font-size: 2.5rem;
-      letter-spacing: 0.1em;
-    }
+    /* PRICING */
+    .pricing-section { padding: 100px 0; }
+    .pricing-header { text-align: center; margin-bottom: 64px; }
+    .pricing-header h2 { font-weight: 300; font-size: 2.5rem; letter-spacing: 0.1em; }
     
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-    }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .tier { background: var(--bg-surface); border: 1px solid var(--border); padding: 56px 40px; display: flex; flex-direction: column; }
+    .tier.premium { border-color: var(--sand); position: relative; }
+    .tier.premium::before { content: attr(data-badge); position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--sand); color: var(--bg-deep); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; padding: 4px 16px; text-transform: uppercase; }
     
-    .tier {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      padding: 56px 40px;
-      display: flex;
-      flex-direction: column;
-    }
-    .tier.premium {
-      border-color: var(--sand);
-      position: relative;
-    }
-    .tier.premium::before {
-      content: "Najžiadanejšie";
-      position: absolute;
-      top: -12px; left: 50%;
-      transform: translateX(-50%);
-      background: var(--sand);
-      color: var(--bg-deep);
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      padding: 4px 16px;
-      text-transform: uppercase;
-    }
+    .tier h3 { font-weight: 300; font-size: 1.4rem; letter-spacing: 0.1em; margin-bottom: 8px; }
+    .tier .price { font-size: 2rem; font-weight: 200; color: var(--sand); margin-bottom: 8px; }
+    .tier .monthly { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 32px; font-weight: 300; }
+    .tier ul { list-style: none; margin-bottom: 48px; flex: 1; }
+    .tier ul li { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; margin-bottom: 16px; display: flex; align-items: flex-start; gap: 12px; }
+    .tier ul li::before { content: "■"; color: var(--emerald); font-size: 0.6rem; margin-top: 4px; }
     
-    .tier h3 {
-      font-weight: 300;
-      font-size: 1.4rem;
-      letter-spacing: 0.1em;
-      color: var(--text-main);
-      margin-bottom: 8px;
-    }
-    .tier .price {
-      font-size: 2rem;
-      font-weight: 200;
-      margin-bottom: 8px;
-      color: var(--sand);
-    }
-    .tier .monthly {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 32px;
-      font-weight: 300;
-    }
-    .tier ul {
-      list-style: none;
-      margin-bottom: 48px;
-      flex: 1;
-    }
-    .tier ul li {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      font-weight: 300;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-    .tier ul li::before {
-      content: "■";
-      color: var(--emerald);
-      font-size: 0.6rem;
-      margin-top: 4px;
-    }
-    .tier .btn-tier {
-      text-align: center;
-      padding: 16px;
-      border: 1px solid var(--text-muted);
-      color: var(--text-main);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-size: 0.7rem;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
+    .btn-tier { text-align: center; padding: 16px; border: 1px solid var(--text-muted); color: var(--text-main); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.7rem; text-decoration: none; transition: all 0.3s; }
     .tier.premium .btn-tier { background: var(--sand); color: var(--bg-deep); border-color: var(--sand); }
     .tier .btn-tier:hover { background: #ffffff; color: #000; border-color: #fff; }
 
-    /* PÄTIČKA */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 0;
-      text-align: center;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
-    }
+    footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.1em; }
   </style>
 </head>
 <body>
@@ -259,80 +101,83 @@
 
   <div class="wrapper">
     <nav>
-      <div class="logo">M<b>I</b>A</div>
-      <div style="font-size: 0.7rem; letter-spacing: 0.1em; color: var(--text-muted);">BY MODELOS INTELIGENCIA ARTIFICIAL S.L.</div>
+      <div class="logo-container">
+        <div class="logo">M<b>I</b>A</div>
+        <div class="logo-sub">BY MODELOS INTELIGENCIA ARTIFICIAL S.L.</div>
+      </div>
+      <div class="lang-switcher">
+        <span class="lang-btn" onclick="setLanguage('en')" id="btn-en">EN</span>
+        <span class="lang-btn" onclick="setLanguage('es')" id="btn-es">ES</span>
+        <span class="lang-btn" onclick="setLanguage('de')" id="btn-de">DE</span>
+        <span class="lang-btn" onclick="setLanguage('sk')" id="btn-sk">SK</span>
+      </div>
     </nav>
 
     <header class="hero">
-      <span class="hero-tag">Sovereign AI Executive Node</span>
-      <h1>Máš už svoju <i>MIU</i>?</h1>
-      <p>Prvý hmatateľný prístup k vašej vlastnej, suverénnej umelej inteligencii. Žiadny verejný cloud. Len čistá dátová diskrétnosť ukrytá v luxusnom 3D artefakte.</p>
-      <a href="#pricing" class="btn-primary">Vybrať konfiguráciu</a>
+      <span class="hero-tag" id="t-hero-tag">Sovereign AI Executive Node</span>
+      <h1 id="t-hero-title">Máš už svoju <i>MIU</i>?</h1>
+      <p id="t-hero-desc">Prvý hmatateľný prístup k vašej vlastnej, suverénnej umelej inteligencii. Žiadny verejný cloud. Len čistá dátová diskrétnosť ukrytá v luxusnom 3D artefakte.</p>
+      <a href="#pricing" class="btn-primary" id="t-btn-hero">Vybrať konfiguráciu</a>
     </header>
 
     <section class="features">
       <div class="feature-card">
-        <h3>Hmatateľný Luxus</h3>
-        <p>Žiadne lacné plasty. Každý žetón MIA je fyzickým šperkom s organickým dizajnom. Je ťažký, chladný a tlačený na mieru z prémiových biomateriálov v matnej pieskovej, smaragdovej alebo hlbokej čiernej farbe.</p>
+        <h3 id="t-feat1-title">Hmatateľný Luxus</h3>
+        <p id="t-feat1-desc">Žiadne lacné plasty. Každý žetón MIA je fyzickým šperkom s organickým dizajnom. Tlačený na mieru z prémiových biomateriálov v matnej pieskovej, smaragdovej alebo čiernej farbe.</p>
       </div>
       <div class="feature-card">
-        <h3>Absolútna Suverenita</h3>
-        <p>Prestaňte kŕmiť korporácie svojimi dátami. MIA je vaša privátna dvojička. Všetky dáta a výpočty bežia na našich zabezpečených off-grid serveroch, ku ktorým nemá prístup nikto iný na svete.</p>
+        <h3 id="t-feat2-title">Absolútna Suverenita</h3>
+        <p id="t-feat2-desc">Prestaňte kŕmiť korporácie svojimi dátami. Všetky výpočty bežia na našich zabezpečených off-grid serveroch, ku ktorým nemá prístup nikto iný na svete.</p>
       </div>
       <div class="feature-card">
-        <h3>NFC Master Key</h3>
-        <p>Jeden dotyk. Iba priložíte svoj žetón k akémukoľvek smartfónu a vášmu partnerovi sa okamžite odomkne plynulá konverzácia s vašou AI. Žiadne sťahovanie aplikácií. Len čistá mágia.</p>
+        <h3 id="t-feat3-title">NFC Master Key</h3>
+        <p id="t-feat3-desc">Jeden dotyk. Priložíte žetón k smartfónu a vášmu partnerovi sa okamžite odomkne konverzácia s vašou AI dvojičkou. Žiadne inštalácie. Čistá mágia.</p>
       </div>
     </section>
 
     <section class="pricing-section" id="pricing">
       <div class="pricing-header">
-        <h2>Úrovne prístupu</h2>
+        <h2 id="t-price-title">Úrovne prístupu</h2>
       </div>
       
       <div class="pricing-grid">
-        <!-- SaaS -->
         <div class="tier">
           <h3>MIA SaaS</h3>
           <div class="price">1 500 €</div>
-          <div class="monthly">+ 49 € mesačne</div>
+          <div class="monthly" id="t-tier1-mo">+ 49 € mesačne</div>
           <ul>
-            <li>Inžiniering osobnosti (System Prompt / RAG)</li>
-            <li>Výroba 10 ks luxusných 3D tokenov na mieru</li>
-            <li>Hosting modelu na privátnom serveri M.I.A.</li>
-            <li>Garantovaná dátová suverenita v EÚ</li>
-            <li>Okamžitá aktualizácia znalostí na vyžiadanie</li>
+            <li id="t-tier1-l1">Inžiniering osobnosti (System Prompt / RAG)</li>
+            <li id="t-tier1-l2">Výroba 10 ks luxusných 3D tokenov na mieru</li>
+            <li id="t-tier1-l3">Hosting modelu na privátnom serveri M.I.A.</li>
+            <li id="t-tier1-l4">Okamžitá aktualizácia znalostí na vyžiadanie</li>
           </ul>
-          <a href="mailto:lucy@thesafehaven.ai?subject=Záujem o MIA SaaS" class="btn-tier">Požiadať o prístup</a>
+          <a href="mailto:lucy@thesafehaven.ai" class="btn-tier" id="t-tier1-btn">Požiadať o prístup</a>
         </div>
 
-        <!-- On-Premise -->
-        <div class="tier premium">
+        <div class="tier premium" id="t-badge" data-badge="Najžiadanejšie">
           <h3>Executive Box</h3>
           <div class="price">4 500 €</div>
-          <div class="monthly">+ 150 € mesačne</div>
+          <div class="monthly" id="t-tier2-mo">+ 150 € mesačne</div>
           <ul>
-            <li>Fyzický dedikovaný HW (Mac Mini) priamo u vás v kancelárii</li>
-            <li>Výroba 30 ks luxusných 3D tokenov s firemným brandom</li>
-            <li>Rozšírená pamäť (Napojenie na interné firemné PDF a dáta)</li>
-            <li>Šifrovaný tunel s 99.9% dostupnosťou</li>
-            <li>Úplná fyzická kontrola nad vašou umelou inteligenciou</li>
+            <li id="t-tier2-l1">Fyzický dedikovaný HW (Mac Mini) u vás v kancelárii</li>
+            <li id="t-tier2-l2">Výroba 30 ks luxusných 3D tokenov s firemným brandom</li>
+            <li id="t-tier2-l3">Rozšírená pamäť (Interné firemné PDF a dáta)</li>
+            <li id="t-tier2-l4">Úplná fyzická kontrola nad vašou AI</li>
           </ul>
-          <a href="mailto:lucy@thesafehaven.ai?subject=Záujem o Executive Box" class="btn-tier">Rezervovať HW inštaláciu</a>
+          <a href="mailto:lucy@thesafehaven.ai" class="btn-tier" id="t-tier2-btn">Rezervovať HW inštaláciu</a>
         </div>
 
-        <!-- Enterprise -->
         <div class="tier">
           <h3>Enterprise HPC</h3>
           <div class="price">Custom</div>
-          <div class="monthly">Odhad na základe projektu</div>
+          <div class="monthly" id="t-tier3-mo">Odhad na základe projektu</div>
           <ul>
-            <li>Plnohodnotný Fine-Tuning otvorených modelov (Mistral / Llama)</li>
-            <li>Trénovanie priamo na infraštruktúre EuroHPC (Leonardo, LUMI)</li>
-            <li>Hlboká integrácia do vnútropodnikových procesov</li>
-            <li>Dodanie flotily NFC žetónov pre celú korporáciu</li>
+            <li id="t-tier3-l1">Fine-Tuning otvorených modelov (Mistral / Llama)</li>
+            <li id="t-tier3-l2">Trénovanie priamo na infraštruktúre EuroHPC</li>
+            <li id="t-tier3-l3">Hlboká integrácia do vnútropodnikových procesov</li>
+            <li id="t-tier3-l4">Dodanie flotily NFC žetónov pre korporáciu</li>
           </ul>
-          <a href="mailto:lucy@thesafehaven.ai?subject=Záujem o Enterprise HPC" class="btn-tier">Kontaktovať architekta</a>
+          <a href="mailto:lucy@thesafehaven.ai" class="btn-tier" id="t-tier3-btn">Kontaktovať architekta</a>
         </div>
       </div>
     </section>
@@ -342,5 +187,160 @@
     </footer>
   </div>
 
+  <script>
+    const translations = {
+      sk: {
+        "t-hero-title": "Máš už svoju <i>MIU</i>?",
+        "t-hero-desc": "Prvý hmatateľný prístup k vašej vlastnej, suverénnej umelej inteligencii. Žiadny verejný cloud. Len čistá dátová diskrétnosť ukrytá v luxusnom 3D artefakte.",
+        "t-btn-hero": "Vybrať konfiguráciu",
+        "t-feat1-title": "Hmatateľný Luxus",
+        "t-feat1-desc": "Žiadne lacné plasty. Každý žetón MIA je fyzickým šperkom s organickým dizajnom. Tlačený na mieru z prémiových biomateriálov v matnej pieskovej, smaragdovej alebo čiernej farbe.",
+        "t-feat2-title": "Absolútna Suverenita",
+        "t-feat2-desc": "Prestaňte kŕmiť korporácie svojimi dátami. Všetky výpočty bežia na našich zabezpečených off-grid serveroch, ku ktorým nemá prístup nikto iný na svete.",
+        "t-feat3-title": "NFC Master Key",
+        "t-feat3-desc": "Jeden dotyk. Priložíte žetón k smartfónu a vášmu partnerovi sa okamžite odomkne konverzácia s vašou AI dvojičkou. Žiadne inštalácie. Čistá mágia.",
+        "t-price-title": "Úrovne prístupu",
+        "badge-text": "Najžiadanejšie",
+        "t-tier1-mo": "+ 49 € mesačne",
+        "t-tier1-l1": "Inžiniering osobnosti (System Prompt / RAG)",
+        "t-tier1-l2": "Výroba 10 ks luxusných 3D tokenov na mieru",
+        "t-tier1-l3": "Hosting modelu na privátnom serveri M.I.A.",
+        "t-tier1-l4": "Okamžitá aktualizácia znalostí na vyžiadanie",
+        "t-tier1-btn": "Požiadať o prístup",
+        "t-tier2-mo": "+ 150 € mesačne",
+        "t-tier2-l1": "Fyzický dedikovaný HW (Mac Mini) u vás v kancelárii",
+        "t-tier2-l2": "Výroba 30 ks luxusných 3D tokenov s firemným brandom",
+        "t-tier2-l3": "Rozšírená pamäť (Interné firemné PDF a dáta)",
+        "t-tier2-l4": "Úplná fyzická kontrola nad vašou AI",
+        "t-tier2-btn": "Rezervovať HW inštaláciu",
+        "t-tier3-mo": "Odhad na základe projektu",
+        "t-tier3-l1": "Fine-Tuning otvorených modelov (Mistral / Llama)",
+        "t-tier3-l2": "Trénovanie priamo na infraštruktúre EuroHPC",
+        "t-tier3-l3": "Hlboká integrácia do vnútropodnikových procesov",
+        "t-tier3-l4": "Dodanie flotily NFC žetónov pre korporáciu",
+        "t-tier3-btn": "Kontaktovať architekta"
+      },
+      en: {
+        "t-hero-title": "Do you have your <i>MIA</i> yet?",
+        "t-hero-desc": "The first tangible access to your own sovereign artificial intelligence. No public cloud. Just pure data discretion hidden in a luxury 3D artifact.",
+        "t-btn-hero": "Select Configuration",
+        "t-feat1-title": "Tangible Luxury",
+        "t-feat1-desc": "No cheap plastics. Every MIA token is a physical jewel with organic design. Custom-printed from premium biomaterials in matte sand, emerald, or black.",
+        "t-feat2-title": "Absolute Sovereignty",
+        "t-feat2-desc": "Stop feeding corporations with your data. All computing runs on our secure off-grid servers, inaccessible to anyone else in the world.",
+        "t-feat3-title": "NFC Master Key",
+        "t-feat3-desc": "One touch. Tap the token to a smartphone, and your partner instantly unlocks a conversation with your AI twin. No installations. Pure magic.",
+        "t-price-title": "Access Tiers",
+        "badge-text": "Most Popular",
+        "t-tier1-mo": "+ €49 per month",
+        "t-tier1-l1": "Personality Engineering (System Prompt / RAG)",
+        "t-tier1-l2": "Production of 10 custom luxury 3D tokens",
+        "t-tier1-l3": "Model hosting on private M.I.A. servers",
+        "t-tier1-l4": "Instant knowledge updates on demand",
+        "t-tier1-btn": "Request Access",
+        "t-tier2-mo": "+ €150 per month",
+        "t-tier2-l1": "Dedicated physical HW (Mac Mini) in your office",
+        "t-tier2-l2": "Production of 30 custom 3D tokens with corporate branding",
+        "t-tier2-l3": "Extended memory (Internal corporate PDFs and data)",
+        "t-tier2-l4": "Full physical control over your AI",
+        "t-tier2-btn": "Reserve HW Installation",
+        "t-tier3-mo": "Estimate based on project scope",
+        "t-tier3-l1": "Full Fine-Tuning of open models (Mistral / Llama)",
+        "t-tier3-l2": "Training directly on EuroHPC infrastructure",
+        "t-tier3-l3": "Deep integration into corporate processes",
+        "t-tier3-l4": "Delivery of an NFC token fleet for the corporation",
+        "t-tier3-btn": "Contact Architect"
+      },
+      es: {
+        "t-hero-title": "¿Ya tienes tu <i>MIA</i>?",
+        "t-hero-desc": "El primer acceso tangible a tu propia inteligencia artificial soberana. Sin nubes públicas. Pura discreción de datos oculta en un artefacto 3D de lujo.",
+        "t-btn-hero": "Seleccionar Configuración",
+        "t-feat1-title": "Lujo Tangible",
+        "t-feat1-desc": "Sin plásticos baratos. Cada token MIA es una joya física de diseño orgánico. Impreso a medida con biomateriales premium en colores arena mate, esmeralda o negro.",
+        "t-feat2-title": "Soberanía Absoluta",
+        "t-feat2-desc": "Deja de alimentar a las corporaciones con tus datos. Todos los cálculos se ejecutan en nuestros servidores seguros off-grid, inaccesibles para el resto del mundo.",
+        "t-feat3-title": "NFC Master Key",
+        "t-feat3-desc": "Un solo toque. Acerca el token a un smartphone y tu socio desbloqueará al instante una conversación con tu gemelo de IA. Sin instalaciones. Pura magia.",
+        "t-price-title": "Niveles de Acceso",
+        "badge-text": "Más Solicitado",
+        "t-tier1-mo": "+ 49 € al mes",
+        "t-tier1-l1": "Ingeniería de Personalidad (System Prompt / RAG)",
+        "t-tier1-l2": "Producción de 10 tokens 3D de lujo a medida",
+        "t-tier1-l3": "Alojamiento del modelo en servidores privados M.I.A.",
+        "t-tier1-l4": "Actualizaciones de conocimiento al instante bajo demanda",
+        "t-tier1-btn": "Solicitar Acceso",
+        "t-tier2-mo": "+ 150 € al mes",
+        "t-tier2-l1": "Hardware físico dedicado (Mac Mini) en tu oficina",
+        "t-tier2-l2": "Producción de 30 tokens 3D con branding corporativo",
+        "t-tier2-l3": "Memoria extendida (PDFs y datos internos de la empresa)",
+        "t-tier2-l4": "Control físico total sobre tu IA",
+        "t-tier2-btn": "Reservar Instalación HW",
+        "t-tier3-mo": "Presupuesto basado en el proyecto",
+        "t-tier3-l1": "Fine-Tuning completo de modelos abiertos (Mistral/Llama)",
+        "t-tier3-l2": "Entrenamiento en infraestructura EuroHPC",
+        "t-tier3-l3": "Integración profunda en procesos corporativos",
+        "t-tier3-l4": "Suministro de una flota de tokens NFC para la empresa",
+        "t-tier3-btn": "Contactar al Arquitecto"
+      },
+      de: {
+        "t-hero-title": "Hast du schon deine <i>MIA</i>?",
+        "t-hero-desc": "Der erste greifbare Zugang zu deiner eigenen souveränen KI. Keine Public Cloud. Reine Datendiskretion verborgen in einem luxuriösen 3D-Artefakt.",
+        "t-btn-hero": "Konfiguration Wählen",
+        "t-feat1-title": "Greifbarer Luxus",
+        "t-feat1-desc": "Kein billiges Plastik. Jeder MIA-Token ist ein physisches Juwel mit organischem Design. Maßgeschneidert gedruckt aus Premium-Biomaterialien in mattem Sand, Smaragd oder Schwarz.",
+        "t-feat2-title": "Absolute Souveränität",
+        "t-feat2-desc": "Hör auf, Konzerne mit deinen Daten zu füttern. Alle Berechnungen laufen auf unseren sicheren Off-Grid-Servern, unzugänglich für den Rest der Welt.",
+        "t-feat3-title": "NFC Master Key",
+        "t-feat3-desc": "Eine Berührung. Halte den Token an ein Smartphone, und dein Geschäftspartner entsperrt sofort ein Gespräch mit deinem KI-Zwilling. Keine Installationen. Magie.",
+        "t-price-title": "Zugangsstufen",
+        "badge-text": "Am Beliebtesten",
+        "t-tier1-mo": "+ 49 € pro Monat",
+        "t-tier1-l1": "Persönlichkeits-Engineering (System Prompt / RAG)",
+        "t-tier1-l2": "Produktion von 10 maßgeschneiderten 3D-Luxustokens",
+        "t-tier1-l3": "Modell-Hosting auf privaten M.I.A.-Servern",
+        "t-tier1-l4": "Sofortige Wissensaktualisierungen auf Anfrage",
+        "t-tier1-btn": "Zugang Anfordern",
+        "t-tier2-mo": "+ 150 € pro Monat",
+        "t-tier2-l1": "Dedizierte physische HW (Mac Mini) in deinem Büro",
+        "t-tier2-l2": "Produktion von 30 3D-Tokens mit Firmenbranding",
+        "t-tier2-l3": "Erweiterter Speicher (Interne Firmen-PDFs und Daten)",
+        "t-tier2-l4": "Volle physische Kontrolle über deine KI",
+        "t-tier2-btn": "HW-Installation Reservieren",
+        "t-tier3-mo": "Kostenvoranschlag nach Projektumfang",
+        "t-tier3-l1": "Vollständiges Fine-Tuning offener Modelle (Mistral/Llama)",
+        "t-tier3-l2": "Training direkt auf der EuroHPC-Infrastruktur",
+        "t-tier3-l3": "Tiefe Integration in Unternehmensprozesse",
+        "t-tier3-l4": "Lieferung einer NFC-Token-Flotte für den Konzern",
+        "t-tier3-btn": "Architekt Kontaktieren"
+      }
+    };
+
+    function setLanguage(lang) {
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('btn-' + lang).classList.add('active');
+
+      const dict = translations[lang];
+      for (const [id, text] of Object.entries(dict)) {
+        if (id === 'badge-text') {
+          document.getElementById('t-badge').setAttribute('data-badge', text);
+        } else {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = text;
+        }
+      }
+    }
+
+    // Auto-detekcia jazyka pri načítaní stránky
+    window.addEventListener('DOMContentLoaded', () => {
+      const userLang = navigator.language || navigator.userLanguage;
+      let targetLang = 'en'; // Default globálny jazyk
+      
+      if (userLang.startsWith('sk') || userLang.startsWith('cs')) targetLang = 'sk';
+      if (userLang.startsWith('es')) targetLang = 'es';
+      if (userLang.startsWith('de')) targetLang = 'de';
+
+      setLanguage(targetLang);
+    });
+  </script>
 </body>
 </html>
