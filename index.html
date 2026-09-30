@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIA // Sovereign AI Node</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #030303;
+      --bg-surface: #0a0a0a;
+      --sand: #d4b895;
+      --emerald: #145037; /* Temná, luxusná smaragdová */
+      --text-main: #f0f0f0;
+      --text-muted: #888888;
+      --border: #1a1a1a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Odkaz na Zahu Hadid - plynulé rozostrené svetlá v pozadí */
+    .glow-1 {
+      position: absolute;
+      top: -10%; left: -10%;
+      width: 50vw; height: 50vw;
+      background: radial-gradient(circle, rgba(20, 80, 55, 0.15) 0%, rgba(0,0,0,0) 70%);
+      z-index: 0; pointer-events: none;
+    }
+    .glow-2 {
+      position: absolute;
+      bottom: -10%; right: -10%;
+      width: 40vw; height: 40vw;
+      background: radial-gradient(circle, rgba(212, 184, 149, 0.1) 0%, rgba(0,0,0,0) 70%);
+      z-index: 0; pointer-events: none;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* NAVIGÁCIA */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-weight: 300;
+      font-size: 1.2rem;
+      letter-spacing: 0.3em;
+    }
+    .logo b { color: var(--sand); font-weight: 500; }
+
+    /* HERO SEKCIA */
+    .hero {
+      text-align: center;
+      padding: 120px 0 80px;
+    }
+    .hero-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      color: var(--emerald);
+      margin-bottom: 24px;
+      display: inline-block;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 200;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+    .hero h1 i {
+      font-style: normal;
+      color: var(--sand);
+    }
+    .hero p {
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 18px 40px;
+      background: transparent;
+      border: 1px solid var(--sand);
+      color: var(--sand);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: var(--sand);
+      color: var(--bg-deep);
+    }
+
+    /* FEATURE SEKCIA */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+    .feature-card {
+      background: var(--bg-surface);
+      padding: 48px 32px;
+      border: 1px solid var(--border);
+      transition: border-color 0.4s ease;
+    }
+    .feature-card:hover { border-color: var(--emerald); }
+    .feature-card h3 {
+      font-weight: 400;
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+    .feature-card p {
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* CENNÍK (PRICING) */
+    .pricing-section {
+      padding: 100px 0;
+    }
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .pricing-header h2 {
+      font-weight: 300;
+      font-size: 2.5rem;
+      letter-spacing: 0.1em;
+    }
+    
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    
+    .tier {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      padding: 56px 40px;
+      display: flex;
+      flex-direction: column;
+    }
+    .tier.premium {
+      border-color: var(--sand);
+      position: relative;
+    }
+    .tier.premium::before {
+      content: "Najžiadanejšie";
+      position: absolute;
+      top: -12px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--sand);
+      color: var(--bg-deep);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      padding: 4px 16px;
+      text-transform: uppercase;
+    }
+    
+    .tier h3 {
+      font-weight: 300;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+    .tier .price {
+      font-size: 2rem;
+      font-weight: 200;
+      margin-bottom: 8px;
+      color: var(--sand);
+    }
+    .tier .monthly {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+    .tier ul {
+      list-style: none;
+      margin-bottom: 48px;
+      flex: 1;
+    }
+    .tier ul li {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .tier ul li::before {
+      content: "■";
+      color: var(--emerald);
+      font-size: 0.6rem;
+      margin-top: 4px;
+    }
+    .tier .btn-tier {
+      text-align: center;
+      padding: 16px;
+      border: 1px solid var(--text-muted);
+      color: var(--text-main);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.7rem;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .tier.premium .btn-tier { background: var(--sand); color: var(--bg-deep); border-color: var(--sand); }
+    .tier .btn-tier:hover { background: #ffffff; color: #000; border-color: #fff; }
+
+    /* PÄTIČKA */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+
+  <div class="wrapper">
+    <nav>
+      <div class="logo">M<b>I</b>A</div>
+      <div style="font-size: 0.7rem; letter-spacing: 0.1em; color: var(--text-muted);">BY MODELOS INTELIGENCIA ARTIFICIAL S.L.</div>
+    </nav>
+
+    <header class="hero">
+      <span class="hero-tag">Sovereign AI Executive Node</span>
+      <h1>Máš už svoju <i>MIU</i>?</h1>
+      <p>Prvý hmatateľný prístup k vašej vlastnej, suverénnej umelej inteligencii. Žiadny verejný cloud. Len čistá dátová diskrétnosť ukrytá v luxusnom 3D artefakte.</p>
+      <a href="#pricing" class="btn-primary">Vybrať konfiguráciu</a>
+    </header>
+
+    <section class="features">
+      <div class="feature-card">
+        <h3>Hmatateľný Luxus</h3>
+        <p>Žiadne lacné plasty. Každý žetón MIA je fyzickým šperkom s organickým dizajnom. Je ťažký, chladný a tlačený na mieru z prémiových biomateriálov v matnej pieskovej, smaragdovej alebo hlbokej čiernej farbe.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Absolútna Suverenita</h3>
+        <p>Prestaňte kŕmiť korporácie svojimi dátami. MIA je vaša privátna dvojička. Všetky dáta a výpočty bežia na našich zabezpečených off-grid serveroch, ku ktorým nemá prístup nikto iný na svete.</p>
+      </div>
+      <div class="feature-card">
+        <h3>NFC Master Key</h3>
+        <p>Jeden dotyk. Iba priložíte svoj žetón k akémukoľvek smartfónu a vášmu partnerovi sa okamžite odomkne plynulá konverzácia s vašou AI. Žiadne sťahovanie aplikácií. Len čistá mágia.</p>
+      </div>
+    </section>
+
+    <section class="pricing-section" id="pricing">
+      <div class="pricing-header">
+        <h2>Úrovne prístupu</h2>
+      </div>
+      
+      <div class="pricing-grid">
+        <!-- SaaS -->
+        <div class="tier">
+          <h3>MIA SaaS</h3>
+          <div class="price">1 500 €</div>
+          <div class="monthly">+ 49 € mesačne</div>
+          <ul>
+            <li>Inžiniering osobnosti (System Prompt / RAG)</li>
+            <li>Výroba 10 ks luxusných 3D tokenov na mieru</li>
+            <li>Hosting modelu na privátnom serveri M.I.A.</li>
+            <li>Garantovaná dátová suverenita v EÚ</li>
+            <li>Okamžitá aktualizácia znalostí na vyžiadanie</li>
+          </ul>
+          <a href="mailto:lucy@thesafehaven.ai?subject=Záujem o MIA SaaS" class="btn-tier">Požiadať o prístup</a>
+        </div>
+
+        <!-- On-Premise -->
+        <div class="tier premium">
+          <h3>Executive Box</h3>
+          <div class="price">4 500 €</div>
+          <div class="monthly">+ 150 € mesačne</div>
+          <ul>
+            <li>Fyzický dedikovaný HW (Mac Mini) priamo u vás v kancelárii</li>
+            <li>Výroba 30 ks luxusných 3D tokenov s firemným brandom</li>
+            <li>Rozšírená pamäť (Napojenie na interné firemné PDF a dáta)</li>
+            <li>Šifrovaný tunel s 99.9% dostupnosťou</li>
+            <li>Úplná fyzická kontrola nad vašou umelou inteligenciou</li>
+          </ul>
+          <a href="mailto:lucy@thesafehaven.ai?subject=Záujem o Executive Box" class="btn-tier">Rezervovať HW inštaláciu</a>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="tier">
+          <h3>Enterprise HPC</h3>
+          <div class="price">Custom</div>
+          <div class="monthly">Odhad na základe projektu</div>
+          <ul>
+            <li>Plnohodnotný Fine-Tuning otvorených modelov (Mistral / Llama)</li>
+            <li>Trénovanie priamo na infraštruktúre EuroHPC (Leonardo, LUMI)</li>
+            <li>Hlboká integrácia do vnútropodnikových procesov</li>
+            <li>Dodanie flotily NFC žetónov pre celú korporáciu</li>
+          </ul>
+          <a href="mailto:lucy@thesafehaven.ai?subject=Záujem o Enterprise HPC" class="btn-tier">Kontaktovať architekta</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Modelos Inteligencia Artificial S.L. | Sovereign AI Architecture
+    </footer>
+  </div>
+
+</body>
+</html>
